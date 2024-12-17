@@ -25,6 +25,7 @@ server.get("/users", (req, res) => {
     }
     res.send(rows);
   });
+  db.close();
 });
 
 server.listen(3000, () =>
