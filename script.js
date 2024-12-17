@@ -1,17 +1,29 @@
-const url = "https://my-json-server.typicode.com/mie-du/gik339-ht23/users";
+const url = "http://localhost:3000/users";
 
 fetch(url)
-.then((response) => {
-    if (!response.ok) {
-        throw new Error("Network response was not ok");
-    }
-    return response.json(); // Översätt svaret till JSON
-})
-.then((users) => {
-    console.log('Parsed users:', users); // Logga den parsade JSON-datan
-    const html = `<p>${users[0].firstname}</p>`; // Använd backticks för template literals
-    document.body.insertAdjacentHTML('beforeend', html);
-})
-.catch((error) => {
-    console.error("There was an error with the fetch operation:", error);
-});
+    .then((response) => {
+        console.log(response);
+        return response.json(); // Översätt svaret till JSON
+    })
+    .then((users) => {
+        // Skapa ul-elementet
+        const ul = document.createElement('ul');
+
+        // Loopa igenom användarna och skapa li-element för varje användare
+        users.forEach(user => {
+            const li = document.createElement('li'); // Skapa ett li-element
+
+            // Skapa innehållet för varje li-element
+            li.innerHTML = `Förnamn: ${user.firstName} Efternamn: ${user.lastName}`; // Skriv ut användarens namn och användarnamn
+
+
+            li.style.backgroundColor = user.color; // Sätt bakgrundsfärgen från användarens color-egenskap
+            ul.appendChild(li); // Lägg till li-elementet i ul-elementet
+        });
+
+        // Lägg till ul-elementet på sidan
+        document.body.appendChild(ul);
+    })
+    .catch((error) => {
+        console.error("Error fetching data:", error);
+    });
