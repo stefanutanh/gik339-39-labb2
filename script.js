@@ -14,7 +14,7 @@ fetch(url)
             const li = document.createElement('li'); // Skapa ett li-element
 
             // Skapa innehållet för varje li-element
-            li.innerHTML = `Förnamn: ${user.firstName} Efternamn: ${user.lastName} <br> Användarnamn: ${user.username}`; // Skriv ut användarens namn och användarnamn
+            li.innerHTML = `Förnamn: ${user.firstName} // Efternamn: ${user.lastName} // Användarnamn: ${user.username}`; // Skriv ut användarens namn och användarnamn
 
 
             li.style.backgroundColor = user.color; // Sätt bakgrundsfärgen från användarens color-egenskap
